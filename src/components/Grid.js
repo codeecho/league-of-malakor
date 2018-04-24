@@ -1,4 +1,4 @@
-import {POINTER_DOWN, GRID_CELL_DOWN} from '../events';
+import {POINTER_DOWN, GRID_CELL_DOWN} from '../constants/events';
 
 class GridCell extends Phaser.GameObjects.GameObject{
     
@@ -25,11 +25,18 @@ class GridCell extends Phaser.GameObjects.GameObject{
         graphics.on(POINTER_DOWN, () => {
             this.emit(GRID_CELL_DOWN, this);
         }, this);
+        
+        this.graphics = graphics;
     }
     
     getCenter(){
         const {centerX, centerY} = this.shape;
         return new Phaser.Math.Vector2(centerX, centerY);
+    }
+    
+    setColor(color){
+        this.graphics.fillStyle(color);
+        this.graphics.fillRectShape(this.shape);        
     }
     
 }

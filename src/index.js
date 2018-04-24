@@ -1,3 +1,5 @@
+import './index.css';
+
 import Phaser from 'phaser'
 
 import Battle from './screens/Battle';

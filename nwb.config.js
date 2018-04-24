@@ -1,5 +1,5 @@
 module.exports = {
-  type: 'web-app',
+  type: 'react-app',
   devServer: {
       disableHostCheck: true
   },

@@ -1,0 +1,15 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootswatch/cyborg/bootstrap.css";
+@import "~react-toastify/dist/ReactToastify.css";
+
+body{
+    margin:0px;
+    color:white;
+}
+
+#dom-container{
+    position:absolute;
+    top:0px;
+    bottom:0px;
+    left:0px;
+}

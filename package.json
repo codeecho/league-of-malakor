@@ -4,15 +4,24 @@
   "description": "Describe app here",
   "private": true,
   "scripts": {
-    "build": "nwb build-web-app",
+    "build": "nwb build-react-app",
     "clean": "nwb clean-app",
-    "start": "nwb serve-web-app --reload",
+    "start": "nwb serve-react-app --reload",
     "test": "nwb test",
     "test:coverage": "nwb test --coverage",
     "test:watch": "nwb test --server"
   },
   "dependencies": {
-    "phaser": "^3.2.1"
+    "bootstrap": "^3.3.7",
+    "bootswatch": "^3.3.7",
+    "easystarjs": "^0.4.3",
+    "mobx": "^4.2.0",
+    "mobx-react": "^5.0.0",
+    "phaser": "^3.2.1",
+    "react": "^16.3.2",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.3.2",
+    "react-toastify": "^4.0.0-rc.4"
   },
   "devDependencies": {
     "nwb": "0.21.x",
