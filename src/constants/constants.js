@@ -12,5 +12,9 @@ export const ACTIONS = {
 };
 
 export const ATTACK_TYPE = {
-    LINE_OF_SIGHT: 'line-of-sight'
+    LINE_OF_SIGHT: 'line-of-sight',
+    HEAL: 'heal',
+    MULTI_DIRECTION: 'multi-direction',
+    AOE: 'aoe',
+    FREEZE: 'freeze'
 };

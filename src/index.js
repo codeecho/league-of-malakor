@@ -5,9 +5,9 @@ import Phaser from 'phaser'
 import Battle from './screens/Battle';
 
 var config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    type: Phaser.CANVAS,
+    width: 960,
+    height: 640,
     scene: [
         Battle
     ]

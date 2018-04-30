@@ -27,6 +27,9 @@ class GridCell extends Phaser.GameObjects.GameObject{
         }, this);
         
         this.graphics = graphics;
+        
+        this.animation = new Phaser.GameObjects.Sprite(scene, this.shape.centerX, this.shape.centerY, 'slash');
+        scene.animationsLayer.add(this.animation, true);
     }
     
     getCenter(){
@@ -37,6 +40,10 @@ class GridCell extends Phaser.GameObjects.GameObject{
     setColor(color){
         this.graphics.fillStyle(color);
         this.graphics.fillRectShape(this.shape);        
+    }
+    
+    playAnimation(animation){
+        this.animation.anims.play(animation, true);
     }
     
 }

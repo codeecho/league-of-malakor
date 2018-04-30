@@ -6,14 +6,18 @@ import Team from '../models/Team';
 
 import {toast} from 'react-toastify';
 
+import {LEFT, RIGHT, UP, DOWN} from '../constants/directions';
+
+import BattleCalculator from '../utils/BattleCalculator';
+
 export default class BattleStateManager{
     
     constructor(){
         this.state = observable({
             gameOver: false,
             teams: [
-                new Team('Team 1', true),
-                new Team('Team 2', false)
+                new Team('Green', true, 'green'),
+                new Team('Red', false, 'red')
             ],
             get activeTeam() {
                 return this.teams.find(team => team.active);
@@ -26,6 +30,8 @@ export default class BattleStateManager{
             },
             action: undefined
         });
+        
+        this.battleCalculator = new BattleCalculator();
     }
     
     selectUnit(unit){
@@ -46,6 +52,16 @@ export default class BattleStateManager{
         this.state.action = ACTIONS.ATTACK;
     }
     
+    faceSelectedUnit(target){
+        const {selectedUnit} = this.state;
+        const {cell} = selectedUnit;
+        let direction = RIGHT;
+        if(target.col < cell.col) direction = UP;
+        if(target.col > cell.col) direction = DOWN;
+        if(target.row < cell.row) direction = LEFT;
+        selectedUnit.facing = direction;
+    }
+    
     attack(units){
         const {selectedUnit, activeTeam} = this.state;
         selectedUnit.hasActed = true;
@@ -56,7 +72,7 @@ export default class BattleStateManager{
         this.state.action = ACTIONS.MOVE;
         
         units.forEach(unit => {
-            const damageInflicted = 100;
+            const damageInflicted = this.battleCalculator.calculateDamage(selectedUnit, unit);
             unit.health = unit.health - damageInflicted;
             if(unit.health <= 0){
                 unit.alive = false;
@@ -76,6 +92,16 @@ export default class BattleStateManager{
             const winner = this.state.teams[0];
             toast.info(`${winner.name} win`);
         }
+    }
+    
+    heal(){
+        this.state.activeTeam.units.forEach(unit => {
+            unit.health = Math.min(unit.health + this.state.selectedUnit.attack.power, unit.maxHealth); 
+        });
+    }
+    
+    freeze(units){
+        units.forEach(unit => unit.wait = unit.wait + this.state.selectedUnit.attack.power);
     }
     
     endTurn(){

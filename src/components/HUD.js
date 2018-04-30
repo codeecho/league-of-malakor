@@ -15,7 +15,7 @@ export default class HUD{
         
         const state = this.stateManager.state;
 
-        scene.react.add(500, 0, 300, 500, 
+        scene.react.add(800, 0, 160, 560, 
             <SelectedUnit state={observable({
                 get unit() { return state.selectedUnit; },
                 get action() { return state.action; },
@@ -30,7 +30,7 @@ export default class HUD{
             })} selectAction={this.selectAction} />
         );
         
-        scene.react.add(0, 500, 800, 100, 
+        scene.react.add(0, 560, 960, 80, 
             <GameActions
                 state={observable({
                     get activeTeam() { return state.activeTeam; },

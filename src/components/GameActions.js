@@ -17,6 +17,8 @@ const GameActions = observer(function (props){
         )
     }
     
+    if(!props.state.activeTeam) return null;
+    
     return (
         <div>
             <span>{props.state.activeTeam.name}'s Turn </span>
