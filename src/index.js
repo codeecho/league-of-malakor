@@ -6,6 +6,7 @@ import Battle from './screens/Battle';
 
 var config = {
     type: Phaser.CANVAS,
+    parent: 'game-container',
     width: 960,
     height: 640,
     scene: [

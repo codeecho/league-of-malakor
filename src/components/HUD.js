@@ -2,8 +2,7 @@ import React from 'react';
 
 import {observable} from 'mobx';
 
-import SelectedUnit from './SelectedUnit';
-import GameActions from './GameActions';
+import SideBar from './SideBar';
 
 export default class HUD{
     
@@ -16,9 +15,11 @@ export default class HUD{
         const state = this.stateManager.state;
 
         scene.react.add(800, 0, 160, 560, 
-            <SelectedUnit state={observable({
+            <SideBar state={observable({
                 get unit() { return state.selectedUnit; },
                 get action() { return state.action; },
+                get activeTeam() { return state.activeTeam; },
+                get gameOver() { return state.gameOver; },
                 get canAct() {
                     const {activeTeam, selectedUnit} = state;
                     return selectedUnit 
@@ -27,17 +28,7 @@ export default class HUD{
                         && activeTeam.units.find(unit => unit === selectedUnit) 
                         && (!activeTeam.hasActed || selectedUnit.hasActed);
                 }
-            })} selectAction={this.selectAction} />
-        );
-        
-        scene.react.add(0, 560, 960, 80, 
-            <GameActions
-                state={observable({
-                    get activeTeam() { return state.activeTeam; },
-                    get gameOver() { return state.gameOver; }
-                })}
-                endTurn={this.endTurn} 
-            />
+            })} selectAction={this.selectAction} endTurn={this.endTurn} />
         );
     }
     

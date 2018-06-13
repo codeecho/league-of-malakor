@@ -5,11 +5,21 @@
 body{
     margin:0px;
     color:white;
+    text-align: center;    
 }
 
 #dom-container{
-    position:absolute;
+    position:relative;
     top:0px;
     bottom:0px;
     left:0px;
+}
+
+.well{
+    border-radius: 0px;
+    margin:2px;
+}
+
+#game-container{
+    display:inline-block;
 }

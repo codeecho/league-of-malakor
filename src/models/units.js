@@ -6,8 +6,8 @@ import {RIGHT} from '../constants/directions';
 
 const unit = {
     alive: true,
-    health: 60,
-    maxHealth: 60,
+    health: 50,
+    maxHealth: 50,
     selected: false,
     hasActed: false,
     hasMoved: false,
@@ -70,7 +70,7 @@ export function Paladin(){
         movement: 4,
         attack: {
             type: MULTI_DIRECTION,
-            power: 50,
+            power: 60,
             range: 1,
             animation: 'thunder'
         }
@@ -85,7 +85,7 @@ export function Warlock(){
         movement: 3,
         attack: {
             type: AOE,
-            power: 50,
+            power: 60,
             range: 4,
             animation: 'magic'
         }
@@ -100,7 +100,7 @@ export function Demon(){
         movement: 2,
         attack: {
             type: LINE_OF_SIGHT,
-            power: 50,
+            power: 60,
             range: 4,
             animation: 'fire',
             aoe: true

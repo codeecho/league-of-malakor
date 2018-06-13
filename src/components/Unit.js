@@ -61,6 +61,7 @@ export default class Unit extends Phaser.GameObjects.Sprite{
                 this.visible = false;
                 this.healthLabel.visible = false;
                 this.waitLabel.visible = false;
+                this.identifier.visible = false;
             }
         });
         
