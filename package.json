@@ -21,7 +21,8 @@
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
-    "react-toastify": "^4.0.0-rc.4"
+    "react-toastify": "^4.0.0-rc.4",
+    "surge": "^0.20.1"
   },
   "devDependencies": {
     "nwb": "0.21.x",
